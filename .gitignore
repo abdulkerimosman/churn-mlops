@@ -48,10 +48,10 @@ ENV/
 !data/interim/.gitkeep
 
 # Models (tracked separately)
-models/*.pkl
-models/*.h5
-models/*.pt
-models/*.joblib
+# models/*.pkl
+# models/*.h5
+# models/*.pt
+# models/*.joblib
 !models/.gitkeep
 
 # MLflow

@@ -12,7 +12,12 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from dashboard import database
 
 # Configuration
-API_URL = os.getenv("API_URL", "http://localhost:8000")
+API_URL = os.getenv("API_URL")
+if not API_URL:
+    try:
+        API_URL = st.secrets["API_URL"]
+    except (FileNotFoundError, KeyError):
+        API_URL = "http://localhost:8000"
 RAW_DATA_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'raw', 'WA_Fn-UseC_-Telco-Customer-Churn.csv')
 
 # Initialize & Seed DB (Cached to prevent re-running on every interaction)

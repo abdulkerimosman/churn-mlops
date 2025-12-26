@@ -9,6 +9,14 @@ load_dotenv()
 
 # Configuration
 MONGO_URI = os.getenv("MONGO_URI")
+
+# Fallback for Streamlit Cloud Secrets
+if not MONGO_URI:
+    try:
+        import streamlit as st
+        MONGO_URI = st.secrets["MONGO_URI"]
+    except (ImportError, FileNotFoundError, KeyError):
+        pass
 DB_NAME = "churn_crm"
 COLLECTION_NAME = "customers"
 

@@ -183,11 +183,13 @@ async def predict_churn(customer: CustomerFeatures):
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=f"Prediction failed: {str(e)}"
         )
+    except HTTPException:
+        raise
     except Exception as e:
         logger.error(f"Unexpected error: {e}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Internal server error"
+            detail=f"Internal server error: {str(e)}"
         )
 
 
