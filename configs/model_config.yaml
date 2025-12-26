@@ -1,0 +1,31 @@
+# Model Training Configuration
+model:
+  type: "xgboost"      # "logistic_regression", "random_forest", "gradient_boosting", "xgboost"
+  hyperparameters:
+    n_estimators: 100
+    learning_rate: 0.1
+    max_depth: 3
+    subsample: 0.8
+    random_state: 42
+
+data:
+  processed_data_path: "data/raw" # Using raw path as loader handles it
+  filename: "WA_Fn-UseC_-Telco-Customer-Churn.csv"
+  target_column: "Churn"
+  test_size: 0.2
+
+features:
+  create_ratio_features: false # Notebook didn't use these
+  encode_categorical: true
+  scale_numeric: true
+
+training:
+  random_state: 42
+
+mlflow:
+  experiment_name: "churn-prediction"
+  tracking_uri: "http://127.0.0.1:8080"
+  register_model: false
+
+artifacts:
+  model_path: "models/churn_model.pkl"

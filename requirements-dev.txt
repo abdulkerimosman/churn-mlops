@@ -1,0 +1,14 @@
+-r requirements.txt
+
+# Development tools
+jupyter==1.0.0
+jupyterlab==4.0.10
+ipython==8.19.0
+notebook==7.0.6
+
+# Additional testing
+hypothesis==6.92.1
+
+# Documentation
+mkdocs==1.5.3
+mkdocs-material==9.5.3
