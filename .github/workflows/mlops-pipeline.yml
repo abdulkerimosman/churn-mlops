@@ -38,6 +38,11 @@ jobs:
     - name: Run Batch Inference Flow
       run: python run_inference_flow.py
 
+    - name: Run DB Customer Inference
+      run: python run_existing_customer_inference.py
+      env:
+        MONGO_URI: ${{ secrets.MONGO_URI }}
+
     - name: Commit and Push Changes
       run: |
         git config --global user.name 'GitHub Action'
