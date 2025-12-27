@@ -21,7 +21,7 @@ pydantic==2.5.3
 pydantic-settings==2.1.0
 
 # === ORCHESTRATION (Modernized) ===
-prefect==2.14.20
+prefect>=2.19.0
 
 # === MONITORING (Modernized) ===
 evidently>=0.4.19
