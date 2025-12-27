@@ -5,6 +5,7 @@ import plotly.express as px
 import os
 import json
 import sys
+from datetime import datetime
 
 # Add parent directory to path to import database
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -21,12 +22,20 @@ if not API_URL:
 RAW_DATA_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'raw', 'WA_Fn-UseC_-Telco-Customer-Churn.csv')
 
 # Initialize & Seed DB (Cached to prevent re-running on every interaction)
-@st.cache_resource
+@st.cache_resource(show_spinner=False)
 def init_app_db():
     database.init_db()
     database.seed_database(RAW_DATA_PATH)
 
 init_app_db()
+
+@st.cache_data
+def get_customer_data():
+    return database.load_customers()
+
+@st.cache_data
+def get_high_risk_data():
+    return database.get_high_risk_customers()
 
 st.set_page_config(
     page_title="ChurnGuard CRM",
@@ -49,7 +58,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Header
-col1, col2 = st.columns([3, 1])
+col1, col2 = st.columns([9, 1])
 with col1:
     st.title("🛡️ ChurnGuard CRM")
     st.markdown("### Customer Retention & Risk Analysis System")
@@ -65,70 +74,99 @@ with col1:
 with col2:
     st.image("https://img.icons8.com/fluency/96/user-group-man-woman.png", width=80)
 
-@st.dialog("Customer Details")
+@st.dialog("Customer Action Plan", width="large")
 def show_customer_details(row):
-    st.header(f"{row.get('customer_name', 'Unknown Customer')}")
-    st.caption(f"ID: {row['customerID']}")
+    # Header
+    st.subheader(f"{row.get('customer_name', 'Unknown Customer')} (ID: {row['customerID']})")
     
-    # Contact Info
-    st.subheader("Contact Info")
-    st.write(f"📧 {row.get('contact_email', 'N/A')}")
-    st.write(f"📱 {row.get('contact_phone', 'N/A')}")
-    st.divider()
+    col_left, col_right = st.columns([1, 1], gap="large")
+    
+    with col_left:
+        # Contact & Profile Combined
+        st.markdown("#### 👤 Profile & Contact")
+        st.markdown(f"""
+        **Email:** {row.get('contact_email', 'N/A')}  
+        **Phone:** {row.get('contact_phone', 'N/A')}
+        """)
+        
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown(f"**Contract:**\n{row['Contract']}")
+            st.markdown(f"**Tenure:**\n{row['tenure']} months")
+        with c2:
+            st.markdown(f"**Monthly:**\n${row['MonthlyCharges']}")
+            st.markdown(f"**Internet:**\n{row['InternetService']}")
 
-    # Profile Details
-    c1, c2 = st.columns(2)
-    with c1:
-        st.write(f"**Contract:** {row['Contract']}")
-        st.write(f"**Tenure:** {row['tenure']} months")
-    with c2:
-        st.write(f"**Monthly:** ${row['MonthlyCharges']}")
-        st.write(f"**Internet:** {row['InternetService']}")
-    
-    st.divider()
-    
-    # Recommended Actions
-    st.subheader("Recommended Actions")
-    if row['Contract'] == 'Month-to-month':
-        st.markdown("• Offer 1-Year Contract (20% off)")
-    if row['MonthlyCharges'] > 80:
-        st.markdown("• Review Pricing Plan / Offer Discount")
-    if row['TechSupport'] == 'No':
-        st.markdown("• Offer Free Tech Support Add-on")
-    if row['InternetService'] == 'Fiber optic':
-        st.markdown("• Check Service Quality")
-    
-    st.divider()
+        st.divider()
+        
+        # Recommended Actions
+        st.markdown("#### 💡 Recommended Actions")
+        actions = []
+        if row['Contract'] == 'Month-to-month':
+            actions.append("• Offer 1-Year Contract (20% off)")
+        if row['MonthlyCharges'] > 80:
+            actions.append("• Review Pricing Plan / Offer Discount")
+        if row['TechSupport'] == 'No':
+            actions.append("• Offer Free Tech Support Add-on")
+        if row['InternetService'] == 'Fiber optic':
+            actions.append("• Check Service Quality")
+            
+        if actions:
+            for action in actions:
+                st.markdown(action)
+        else:
+            st.info("No specific actions recommended.")
 
-    # Status Update
-    st.subheader("Update Status")
-    new_status = st.selectbox(
-        "Status",
-        ["Pending", "Contacted", "Resolved"],
-        key=f"status_dlg_{row['customerID']}",
-        index=["Pending", "Contacted", "Resolved"].index(row['follow_up_status'])
-    )
-    
-    notes = st.text_area(
-        "Notes", 
-        value=row.get('notes', ''),
-        key=f"notes_dlg_{row['customerID']}"
-    )
-    
-    if st.button("Save Updates", key=f"btn_save_{row['customerID']}"):
-        database.update_customer_status(row['customerID'], new_status, notes)
-        st.success("Updated!")
-        st.rerun()
+    with col_right:
+        # Status Update
+        st.markdown("#### 📝 Status Update")
+        
+        with st.form(key=f"form_{row['customerID']}"):
+            new_status = st.selectbox(
+                "Status",
+                ["Pending", "Contacted", "Resolved"],
+                index=["Pending", "Contacted", "Resolved"].index(row['follow_up_status'])
+            )
+            
+            notes = st.text_area(
+                "Notes", 
+                value=row.get('notes', ''),
+                height=150
+            )
+            
+            if st.form_submit_button("Save Updates", type="primary", use_container_width=True):
+                database.update_customer_status(row['customerID'], new_status, notes)
+                get_customer_data.clear()
+                get_high_risk_data.clear()
+                st.success("Updated!")
+                st.rerun()
 
 # Main Content
-tab1, tab2 = st.tabs(["🏢 Existing Customer Base", "🧪 New Data Analysis"])
+st.sidebar.write("")
+st.sidebar.write("")
+st.sidebar.write("")
 
-# --- TAB 1: EXISTING CUSTOMER BASE ---
-with tab1:
+if 'page' not in st.session_state:
+    st.session_state.page = "🏢 Existing Customer Base"
+
+with st.sidebar:
+    st.markdown("### Navigation")
+    if st.button("🏢 Existing Customer Base", use_container_width=True, type="primary" if st.session_state.page == "🏢 Existing Customer Base" else "secondary"):
+        st.session_state.page = "🏢 Existing Customer Base"
+        st.rerun()
+    
+    if st.button("🧪 New Data Analysis", use_container_width=True, type="primary" if st.session_state.page == "🧪 New Data Analysis" else "secondary"):
+        st.session_state.page = "🧪 New Data Analysis"
+        st.rerun()
+
+page = st.session_state.page
+
+# --- PAGE 1: EXISTING CUSTOMER BASE ---
+if page == "🏢 Existing Customer Base":
     st.markdown("### Current Customer Database")
     
     # Load data from DB
-    db_df = database.load_customers()
+    db_df = get_customer_data()
     
     if db_df.empty:
         st.warning("Database is empty. Please check data source.")
@@ -146,6 +184,12 @@ with tab1:
             m2.metric("Avg Churn Probability", f"{avg_churn:.1%}")
             m3.metric("High Risk Customers", high_risk)
             m4.metric("Predicted Churn Rate", f"{churn_rate:.1%}")
+            
+            # Show last analysis date if available
+            if 'prediction_date' in db_df.columns:
+                last_date = db_df['prediction_date'].max()
+                if pd.notna(last_date):
+                    st.caption(f"Last Analysis: {last_date}")
         else:
             m2.metric("Avg Churn Probability", "N/A")
             m3.metric("High Risk Customers", "N/A")
@@ -213,7 +257,11 @@ with tab1:
                                 lambda x: 'High' if x > 0.7 else 'Medium' if x > 0.3 else 'Low' if pd.notna(x) else 'Unknown'
                             )
                             
+                            db_df['prediction_date'] = datetime.now().strftime("%Y-%m-%d %H:%M")
+
                             database.save_predictions(db_df)
+                            get_customer_data.clear()
+                            get_high_risk_data.clear()
                             st.success("Analysis complete! Database updated.")
                             st.rerun()
                         else:
@@ -227,7 +275,7 @@ with tab1:
         # Intervention Dashboard (High Risk)
         st.subheader("🚨 High Risk Intervention Dashboard")
         
-        high_risk_df = database.get_high_risk_customers()
+        high_risk_df = get_high_risk_data()
         
         if high_risk_df.empty:
             st.info("No high risk customers found. Run analysis to identify risks.")
@@ -275,11 +323,11 @@ with tab1:
                         st.write(f"**Status:** `{row['follow_up_status']}`")
                         
                         # Actions
-                        if st.button("View Details", key=f"btn_view_{row['customerID']}", width="stretch"):
+                        if st.button("Take Action", key=f"btn_view_{row['customerID']}", width="stretch"):
                             show_customer_details(row)
 
-# --- TAB 2: NEW DATA ANALYSIS ---
-with tab2:
+# --- PAGE 2: NEW DATA ANALYSIS ---
+if page == "🧪 New Data Analysis":
     subtab1, subtab2 = st.tabs(["👤 Single Customer", "📂 Batch Upload"])
     
     # Single Customer Analysis
@@ -389,6 +437,19 @@ with tab2:
         st.markdown("#### Batch File Analysis")
         st.info("Upload a CSV file to analyze new customers not in the database.")
         
+        with st.expander("📋 CSV Format Instructions"):
+            st.markdown("""
+            **Required Columns:**
+            - `customerID`: Unique identifier
+            - `gender`, `SeniorCitizen`, `Partner`, `Dependents`
+            - `tenure` (months), `PhoneService`, `MultipleLines`
+            - `InternetService`, `OnlineSecurity`, `OnlineBackup`, `DeviceProtection`, `TechSupport`
+            - `StreamingTV`, `StreamingMovies`, `Contract`, `PaperlessBilling`, `PaymentMethod`
+            - `MonthlyCharges`, `TotalCharges`
+            
+            **Note:** Ensure headers match exactly.
+            """)
+
         uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
         
         if uploaded_file is not None:

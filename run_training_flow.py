@@ -73,14 +73,6 @@ def main_flow(max_depth: int = 3, learning_rate: float = 0.1):
     
     metrics = train_model_task(data_path, hyperparameters=params)
     logger.info(f"Flow completed with metrics: {metrics}")
-    params = {
-        "max_depth": max_depth,
-        "learning_rate": learning_rate,
-        "n_estimators": 100
-    }
-    
-    metrics = train_model_task(data_path, hyperparameters=params)
-    logger.info(f"Flow completed with metrics: {metrics}")
 
 if __name__ == "__main__":
     main_flow()

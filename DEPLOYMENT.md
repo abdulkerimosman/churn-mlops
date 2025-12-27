@@ -30,7 +30,26 @@ This guide explains how to deploy the Churn Prediction System to the cloud.
 
 ---
 
-## Step 2: Deploy the Frontend (Dashboard) to Streamlit Cloud
+## Step 2: Configure Automated Scheduling (GitHub Actions)
+
+We use GitHub Actions to run the training, monitoring, and inference pipelines automatically every 15 minutes for free.
+
+1. Go to your GitHub repository settings.
+2. Navigate to **Secrets and variables** > **Actions**.
+3. Click **New repository secret**.
+4. Add the following secret:
+   - **Name**: `MONGO_URI`
+   - **Value**: Your MongoDB connection string (same as in Step 3).
+
+The workflow file is located at `.github/workflows/mlops-pipeline.yml`. It will:
+- Retrain the model.
+- Check for data drift.
+- Update customer risk scores in the database.
+- Commit any new models or reports back to the repository.
+
+---
+
+## Step 3: Deploy the Frontend (Dashboard) to Streamlit Cloud
 
 1. Go to [share.streamlit.io](https://share.streamlit.io).
 2. Click **New app**.

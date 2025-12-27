@@ -20,9 +20,17 @@ if not MONGO_URI:
 DB_NAME = "churn_crm"
 COLLECTION_NAME = "customers"
 
+_client = None
+
+def get_client():
+    global _client
+    if _client is None:
+        _client = MongoClient(MONGO_URI)
+    return _client
+
 def get_collection():
     """Get the MongoDB collection."""
-    client = MongoClient(MONGO_URI)
+    client = get_client()
     db = client[DB_NAME]
     return db[COLLECTION_NAME]
 
