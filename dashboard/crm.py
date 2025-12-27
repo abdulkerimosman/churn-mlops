@@ -159,6 +159,12 @@ with st.sidebar:
         st.session_state.page = "🧪 New Data Analysis"
         st.rerun()
 
+    st.divider()
+    if st.button("🔄 Refresh Data", use_container_width=True):
+        get_customer_data.clear()
+        get_high_risk_data.clear()
+        st.rerun()
+
 page = st.session_state.page
 
 # --- PAGE 1: EXISTING CUSTOMER BASE ---
