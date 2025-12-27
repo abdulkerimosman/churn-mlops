@@ -35,10 +35,8 @@ jobs:
       env:
         MONGO_URI: ${{ secrets.MONGO_URI }}
 
-    - name: Run Inference Flow (Existing Customers)
-      run: python run_existing_customer_inference.py
-      env:
-        MONGO_URI: ${{ secrets.MONGO_URI }}
+    - name: Run Batch Inference Flow
+      run: python run_inference_flow.py
 
     - name: Commit and Push Changes
       run: |

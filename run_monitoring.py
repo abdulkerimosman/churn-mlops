@@ -1,22 +1,9 @@
 from prefect import flow, task
 import pandas as pd
 import numpy as np
-from evidently.report import Report
-from evidently.metric_preset import DataDriftPreset
 from src.utils.config import Config
+from src.monitoring.drift import DriftDetector
 from loguru import logger
-
-@task(name="Load Reference Data")
-def load_reference_data():
-    """Load the original training data as reference."""
-    config = Config()
-    data_path = config.data_processed_path / "sample_churn_data.csv"
-    if not data_path.exists():
-        raise FileNotFoundError("Reference data not found. Run training flow first.")
-    
-    df = pd.read_csv(data_path)
-    logger.info(f"Loaded reference data: {df.shape}")
-    return df
 
 @task(name="Generate Drifted Data")
 def generate_drifted_data():
@@ -55,41 +42,19 @@ def generate_drifted_data():
     return pd.DataFrame(data)
 
 @task(name="Run Drift Analysis")
-def run_drift_analysis(reference_data, current_data):
-    """Run Evidently data drift report."""
+def run_drift_analysis(current_data):
+    """Run drift analysis using DriftDetector."""
     logger.info("Running drift analysis...")
     
-    # Identify numerical columns for drift detection
-    # In a real scenario, we'd use the schema from training
-    numerical_features = ["tenure", "MonthlyCharges", "TotalCharges"]
+    detector = DriftDetector()
+    drift_metrics = detector.detect_drift(current_data, save_report=True)
     
-    report = Report(metrics=[
-        DataDriftPreset(), 
-    ])
-    
-    report.run(reference_data=reference_data, current_data=current_data)
-    return report
-
-@task(name="Save Report")
-def save_report(report):
-    """Save the HTML report."""
-    from pathlib import Path
-    # Create a reports directory in the project root
-    output_dir = Path("reports")
-    output_dir.mkdir(exist_ok=True)
-    
-    output_path = output_dir / "drift_report.html"
-    report.save_html(str(output_path))
-    logger.info(f"Drift report saved to {output_path}")
-    return output_path
+    return drift_metrics
 
 @flow(name="Data Drift Monitoring")
 def monitoring_flow():
-    ref_df = load_reference_data()
     cur_df = generate_drifted_data()
-    
-    report = run_drift_analysis(ref_df, cur_df)
-    save_report(report)
+    run_drift_analysis(cur_df)
 
 if __name__ == "__main__":
     monitoring_flow()
