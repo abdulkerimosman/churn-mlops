@@ -28,12 +28,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application code
 COPY . .
 
-# Expose the port the app runs on
-EXPOSE 8000
-
-# Command to run the application
-CMD ["sh", "-c", "uvicorn src.api.app:app --host 0.0.0.0 --port ${PORT:-8000}"]
-
 # Create a non-root user and switch to it for security
 RUN useradd -m appuser && chown -R appuser /app
 USER appuser

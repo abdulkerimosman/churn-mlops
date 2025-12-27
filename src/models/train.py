@@ -83,41 +83,37 @@ class ModelTrainer:
             loader = DataLoader(data_path)
             df = loader.load_csv(filename)
             
-            # Validate data
-            validator = DataValidator()
-            # validator.check_missing_values(df) # Skipped as we handle it in preprocessing
-            # validator.check_duplicates(df)
-            
             logger.info(f"Loaded data shape: {df.shape}")
             
-            # Preprocess data (Feature Engineering)
-            # We pass the whole dataframe to handle encoding correctly
-            df_processed = self.feature_engineer.preprocess_data(df, is_training=True)
-            
-            # Separate features and target
-            # Note: preprocess_data might have encoded the target if it was in the df
-            # But our preprocess_data implementation currently doesn't explicitly handle target encoding
-            # except if it was part of the binary/nominal columns.
-            # The notebook does explicit LabelEncoding for Churn.
-            
-            if target_column in df_processed.columns:
-                # Encode target if it's string
-                if df_processed[target_column].dtype == 'object' or df_processed[target_column].dtype.name == 'category':
-                     df_processed[target_column] = self.le.fit_transform(df_processed[target_column])
-                
-                X = df_processed.drop(columns=[target_column])
-                y = df_processed[target_column]
-                
-                # Update feature columns to exclude target
-                self.feature_engineer.feature_columns = X.columns.tolist()
-            else:
-                # If target was dropped or not present (should not happen in training)
-                raise ModelTrainingError(f"Target column '{target_column}' not found in processed data")
-            
-            # Split data
-            X_train, X_test, y_train, y_test = train_test_split(
-                X, y, test_size=test_size, random_state=self.random_state, stratify=y
+            # Split data FIRST to avoid leakage
+            # We split the raw dataframe
+            train_df, test_df = train_test_split(
+                df, test_size=test_size, random_state=self.random_state, stratify=df[target_column]
             )
+            
+            # Separate features and target for Train
+            X_train_raw = train_df.drop(columns=[target_column])
+            y_train_raw = train_df[target_column]
+            
+            # Separate features and target for Test
+            X_test_raw = test_df.drop(columns=[target_column])
+            y_test_raw = test_df[target_column]
+            
+            # Preprocess Train Data (Fit + Transform)
+            X_train = self.feature_engineer.preprocess_data(X_train_raw, is_training=True)
+            
+            # Preprocess Test Data (Transform only)
+            X_test = self.feature_engineer.preprocess_data(X_test_raw, is_training=False)
+            
+            # Encode Target
+            # Fit encoder on training target
+            y_train = self.le.fit_transform(y_train_raw)
+            # Transform test target
+            y_test = self.le.transform(y_test_raw)
+            
+            # Convert back to Series for consistency
+            y_train = pd.Series(y_train, index=train_df.index, name=target_column)
+            y_test = pd.Series(y_test, index=test_df.index, name=target_column)
             
             logger.info(f"Training set: {X_train.shape}, Test set: {X_test.shape}")
             
