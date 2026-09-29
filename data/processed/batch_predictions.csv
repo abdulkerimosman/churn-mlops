@@ -1,51 +1,51 @@
 customerID,gender,SeniorCitizen,Partner,Dependents,tenure,PhoneService,MultipleLines,InternetService,OnlineSecurity,OnlineBackup,DeviceProtection,TechSupport,StreamingTV,StreamingMovies,Contract,PaperlessBilling,PaymentMethod,MonthlyCharges,TotalCharges,Churn_Prediction,Churn_Probability
-NewC0000,Male,1,No,Yes,6,No,Yes,DSL,No,Yes,No,No,Yes,No,Month-to-month,No,Electronic check,82.09507168904337,4563.518940394892,1,0.7315074
-NewC0001,Female,1,No,Yes,29,Yes,Yes,Fiber optic,No,No internet service,No,No,No internet service,No,One year,No,Electronic check,27.96596939798623,1577.3925150191612,0,0.28103867
-NewC0002,Female,0,No,No,56,No,No,DSL,Yes,Yes,No,No,No,No internet service,Two year,No,Electronic check,48.38010490267404,6850.499407689527,0,0.14190494
-NewC0003,Male,0,Yes,Yes,57,No,Yes,No,Yes,No,Yes,No,No internet service,Yes,Two year,Yes,Electronic check,89.65025811154295,318.7635352509901,0,0.09634852
-NewC0004,Male,0,Yes,Yes,58,No,No phone service,DSL,No,No internet service,No,No,No,Yes,Two year,Yes,Electronic check,61.77677474740599,133.91376859972257,0,0.17299126
-NewC0005,Male,0,Yes,Yes,15,Yes,No,No,No internet service,No internet service,No,Yes,Yes,No internet service,One year,No,Mailed check,65.42134980948865,288.51368753873044,0,0.08624232
-NewC0006,Female,1,Yes,Yes,48,No,No phone service,DSL,No internet service,Yes,No,No internet service,No internet service,Yes,Month-to-month,No,Mailed check,61.634652956825654,1204.4145577192055,0,0.47522268
-NewC0007,Female,0,No,Yes,65,Yes,Yes,No,No internet service,Yes,No internet service,Yes,No internet service,No,Month-to-month,Yes,Credit card (automatic),101.21420250782997,4595.248744199079,0,0.14980455
-NewC0008,Male,1,No,No,10,Yes,No phone service,DSL,Yes,Yes,No internet service,No,No,Yes,Month-to-month,Yes,Credit card (automatic),22.691220798489734,268.3596488477285,0,0.46513432
-NewC0009,Female,0,No,No,67,Yes,No,No,Yes,No internet service,Yes,Yes,Yes,No,Month-to-month,Yes,Credit card (automatic),73.15082334378434,387.7933180818106,0,0.13774545
-NewC0010,Female,1,Yes,No,32,No,No,Fiber optic,No internet service,Yes,No,Yes,Yes,Yes,Two year,Yes,Bank transfer (automatic),53.67503383292154,4913.0162926769835,0,0.1678308
-NewC0011,Male,1,No,No,8,Yes,No phone service,No,Yes,No,No internet service,Yes,Yes,No internet service,Month-to-month,Yes,Bank transfer (automatic),91.59141470168868,6067.31455731032,0,0.28623024
-NewC0012,Male,0,Yes,No,18,Yes,Yes,DSL,No,No,No,No,No,Yes,Month-to-month,No,Electronic check,101.05567143136008,7534.692585401027,1,0.57668716
-NewC0013,Female,0,Yes,Yes,23,No,Yes,DSL,No internet service,No,No internet service,Yes,No,No internet service,One year,Yes,Bank transfer (automatic),75.39404115496347,3998.7387319435766,0,0.13782346
-NewC0014,Female,1,Yes,Yes,21,Yes,Yes,Fiber optic,Yes,Yes,Yes,Yes,Yes,No internet service,One year,No,Credit card (automatic),70.35784540799256,1407.786717636466,0,0.2776933
-NewC0015,Female,1,No,Yes,10,Yes,No,No,No internet service,No,Yes,Yes,Yes,No internet service,One year,Yes,Mailed check,52.54595475873398,1718.0174845515585,0,0.1464233
-NewC0016,Female,0,No,No,62,No,No,No,Yes,Yes,Yes,No internet service,No internet service,No internet service,One year,Yes,Credit card (automatic),85.41347589769417,7624.05863370501,0,0.11300752
-NewC0017,Female,1,No,Yes,2,No,Yes,No,No internet service,No,Yes,Yes,Yes,Yes,Month-to-month,Yes,Bank transfer (automatic),78.58839307913001,7902.05703898347,0,0.4541782
-NewC0018,Female,1,Yes,Yes,24,Yes,No,Fiber optic,No internet service,No,Yes,No,Yes,No internet service,Two year,No,Credit card (automatic),66.52487983993532,551.1826326214516,0,0.1347388
-NewC0019,Male,1,Yes,Yes,58,No,No,Fiber optic,Yes,Yes,Yes,No,Yes,No,One year,Yes,Credit card (automatic),31.849060842586567,4097.069348693491,0,0.16327298
-NewC0020,Male,1,Yes,Yes,14,Yes,No,No,No,No internet service,Yes,No internet service,No internet service,No,One year,No,Mailed check,21.127902016620318,7073.723007684093,0,0.112399854
-NewC0021,Male,1,No,Yes,9,Yes,No phone service,DSL,No internet service,No,Yes,No,Yes,No,One year,Yes,Mailed check,28.977643119314628,2703.290192948202,0,0.37592384
-NewC0022,Male,0,No,No,38,No,No phone service,Fiber optic,No,No internet service,No internet service,No internet service,No internet service,No,One year,No,Mailed check,99.49849542132227,3845.153110995083,0,0.2453046
-NewC0023,Female,1,Yes,No,37,No,No,Fiber optic,Yes,No,Yes,Yes,No,No internet service,One year,Yes,Mailed check,60.536884139134756,3638.6268519162168,0,0.1995967
-NewC0024,Male,0,Yes,No,12,Yes,No,DSL,No,No,Yes,Yes,No,No internet service,One year,Yes,Mailed check,113.32408347588247,4259.252969779576,0,0.30158398
-NewC0025,Male,0,Yes,No,67,No,No phone service,DSL,No,No internet service,No,No internet service,Yes,No internet service,Month-to-month,Yes,Mailed check,94.70954593408398,2875.795872891493,0,0.47256014
-NewC0026,Female,1,No,Yes,60,No,No phone service,No,No,No,No,No,No internet service,Yes,One year,Yes,Credit card (automatic),23.192710629844452,6904.61007053329,0,0.1633322
-NewC0027,Female,1,No,No,29,No,Yes,Fiber optic,Yes,No,No internet service,Yes,Yes,Yes,Two year,No,Electronic check,41.68840077915388,6535.421761425853,0,0.26656505
-NewC0028,Male,1,No,Yes,60,No,Yes,No,Yes,No internet service,No internet service,No,Yes,Yes,Two year,Yes,Electronic check,80.47851545991539,5082.864985035922,0,0.16779825
-NewC0029,Male,1,Yes,Yes,22,No,No,Fiber optic,Yes,No,No internet service,No internet service,No,Yes,Month-to-month,No,Mailed check,101.61191887388557,7065.924556499892,1,0.6162101
-NewC0030,Male,1,Yes,Yes,1,Yes,Yes,Fiber optic,No,No internet service,Yes,Yes,No internet service,No internet service,Month-to-month,No,Bank transfer (automatic),80.66563129681941,2047.5521877118451,1,0.7500096
-NewC0031,Female,1,No,No,70,Yes,No,Fiber optic,Yes,Yes,Yes,No internet service,No internet service,Yes,Month-to-month,No,Bank transfer (automatic),32.839948669920375,957.8058189309,0,0.32492477
-NewC0032,Female,1,No,Yes,8,Yes,No,No,Yes,No,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Credit card (automatic),94.24079065263489,6966.134195221665,0,0.083709
-NewC0033,Male,0,Yes,Yes,40,Yes,Yes,Fiber optic,No,Yes,No internet service,Yes,No internet service,Yes,Two year,Yes,Bank transfer (automatic),112.70701661840972,6410.904800866225,0,0.36869183
-NewC0034,Male,0,No,No,49,Yes,Yes,DSL,Yes,Yes,No internet service,Yes,No,No,Two year,No,Bank transfer (automatic),87.21245914020977,7070.719017840055,0,0.052774835
-NewC0035,Female,1,Yes,Yes,31,No,No,DSL,Yes,No internet service,Yes,No internet service,No internet service,No,One year,No,Mailed check,119.88069292108905,2301.8504011817054,0,0.17430985
-NewC0036,Male,1,Yes,No,50,Yes,Yes,DSL,No internet service,No internet service,No internet service,No internet service,Yes,Yes,One year,No,Electronic check,68.31758168455849,1357.9723888000985,0,0.29370338
-NewC0037,Female,1,No,Yes,4,Yes,No,DSL,No internet service,Yes,No internet service,Yes,Yes,No internet service,Month-to-month,Yes,Bank transfer (automatic),23.957418480738607,6969.009357079882,1,0.6039268
-NewC0038,Male,1,Yes,No,4,Yes,Yes,No,Yes,No,No internet service,No,Yes,Yes,Two year,No,Electronic check,73.02235547160927,1821.4318568802114,0,0.12532963
-NewC0039,Male,1,No,No,3,Yes,Yes,No,Yes,No,No internet service,Yes,No,No internet service,One year,No,Mailed check,46.48990142491525,2865.432020226765,0,0.27832657
-NewC0040,Female,0,No,No,10,Yes,No phone service,Fiber optic,Yes,Yes,Yes,Yes,No internet service,No,Month-to-month,No,Credit card (automatic),90.34315252860863,3156.98108012792,1,0.6406476
-NewC0041,Female,1,Yes,Yes,4,Yes,Yes,DSL,Yes,Yes,No internet service,Yes,No internet service,No,Month-to-month,Yes,Electronic check,74.2881770911675,7360.548905759424,1,0.7117952
-NewC0042,Female,0,No,No,53,No,Yes,DSL,No internet service,No internet service,Yes,No,Yes,No internet service,Month-to-month,No,Bank transfer (automatic),75.62794515824339,7000.95338620106,0,0.34673458
-NewC0043,Male,0,Yes,No,52,Yes,No,DSL,No internet service,No,No internet service,No internet service,Yes,No internet service,Month-to-month,No,Electronic check,117.83284416098499,1081.7731445298316,0,0.40618157
-NewC0044,Female,0,No,No,42,Yes,No,DSL,No,Yes,No internet service,Yes,No internet service,No,Two year,No,Mailed check,74.23014829512681,3264.489963171457,0,0.045611925
-NewC0045,Female,1,Yes,Yes,64,No,Yes,DSL,Yes,Yes,No internet service,Yes,No,No internet service,Two year,Yes,Electronic check,42.716893445084835,5779.303969066805,0,0.07404889
-NewC0046,Male,0,No,No,12,No,Yes,Fiber optic,No,No internet service,No,No internet service,Yes,No internet service,One year,Yes,Electronic check,20.817761447791366,7512.301842082918,1,0.6990086
-NewC0047,Female,1,Yes,Yes,50,No,No phone service,DSL,No,Yes,No internet service,No,No internet service,Yes,Two year,No,Mailed check,52.606082116972246,6809.971216947614,0,0.15053003
-NewC0048,Female,0,No,No,69,No,No,No,No,No,No,No internet service,No internet service,No internet service,Month-to-month,Yes,Bank transfer (automatic),93.40564994063105,5071.372520532386,0,0.24079975
-NewC0049,Female,1,No,Yes,9,No,Yes,Fiber optic,No,No,No internet service,Yes,No internet service,No,One year,No,Mailed check,93.42494315728581,4546.117266122526,0,0.4615446
+NewC0000,Male,1,Yes,No,22,No,No,DSL,No,No internet service,No internet service,No internet service,No internet service,Yes,One year,Yes,Mailed check,73.72150354194855,2136.3623468221617,1,0.568719
+NewC0001,Male,0,No,Yes,51,Yes,No,DSL,No internet service,Yes,Yes,No,Yes,No internet service,Two year,Yes,Electronic check,23.01459869072517,877.2452026203421,0,0.11772935
+NewC0002,Male,0,Yes,Yes,17,Yes,Yes,No,Yes,No internet service,No,Yes,No internet service,No,Month-to-month,No,Mailed check,108.84951375056342,4310.274093573435,0,0.2321149
+NewC0003,Male,1,No,Yes,22,No,Yes,No,No,Yes,Yes,No,No internet service,No internet service,Month-to-month,Yes,Electronic check,108.67345460993842,4137.012768627671,0,0.448467
+NewC0004,Female,0,No,Yes,70,Yes,No phone service,Fiber optic,No,No internet service,No internet service,No,No internet service,Yes,Month-to-month,No,Bank transfer (automatic),115.96730021209879,6512.369001076131,0,0.3195196
+NewC0005,Male,0,No,Yes,11,Yes,No,Fiber optic,No internet service,No,Yes,No internet service,No internet service,Yes,One year,No,Credit card (automatic),65.49945761151545,4956.592930239994,0,0.3801457
+NewC0006,Male,0,No,Yes,10,Yes,No phone service,Fiber optic,Yes,Yes,No,Yes,No,No,One year,Yes,Mailed check,86.08996701524957,4988.847076644003,0,0.21474695
+NewC0007,Female,0,No,Yes,11,No,No phone service,Fiber optic,No internet service,No internet service,Yes,Yes,Yes,No internet service,One year,Yes,Electronic check,78.91456656027944,492.52284808054816,0,0.4770585
+NewC0008,Male,1,Yes,Yes,11,Yes,No phone service,No,No internet service,No,No,No internet service,No,No,Month-to-month,Yes,Credit card (automatic),78.84908636513549,6648.801653837492,0,0.28838682
+NewC0009,Male,1,No,Yes,14,No,Yes,Fiber optic,No,No internet service,No internet service,Yes,No,Yes,One year,No,Credit card (automatic),49.4021426460731,6961.480355699921,1,0.5107051
+NewC0010,Male,1,Yes,Yes,49,Yes,No phone service,DSL,No,Yes,No,Yes,Yes,Yes,Two year,No,Electronic check,82.5624187895342,2472.416317875612,0,0.14339907
+NewC0011,Male,0,No,Yes,35,No,No,DSL,Yes,No,No,No internet service,No,Yes,Two year,No,Mailed check,87.67394648465887,6761.362601311732,0,0.06477065
+NewC0012,Female,1,No,Yes,42,No,Yes,Fiber optic,Yes,No,Yes,No,No,Yes,Month-to-month,Yes,Bank transfer (automatic),82.21163699305119,3367.4572138158096,1,0.5820356
+NewC0013,Male,1,No,No,61,Yes,Yes,DSL,No,No internet service,No,No,No internet service,No internet service,One year,Yes,Bank transfer (automatic),53.11427951482716,3153.9919217923098,0,0.13273129
+NewC0014,Male,1,No,No,12,Yes,No phone service,DSL,No,Yes,No internet service,Yes,Yes,Yes,One year,No,Bank transfer (automatic),87.86282506608798,6848.8651981854055,0,0.352394
+NewC0015,Male,0,No,No,40,No,No,Fiber optic,No,Yes,No,No internet service,No,No internet service,Two year,No,Credit card (automatic),110.99281382944278,3082.634977001277,0,0.33138576
+NewC0016,Male,1,No,Yes,28,Yes,No phone service,No,No internet service,Yes,Yes,Yes,Yes,No internet service,Two year,No,Credit card (automatic),45.974748561720105,966.2424416807534,0,0.049946427
+NewC0017,Male,1,No,No,8,No,No phone service,No,No,Yes,No,No,No internet service,No,Month-to-month,No,Credit card (automatic),61.59813245209981,7042.146479975413,0,0.3475354
+NewC0018,Female,1,No,No,10,Yes,No phone service,No,Yes,No internet service,No internet service,No internet service,No internet service,No,Month-to-month,No,Bank transfer (automatic),32.77403706914132,4054.6751649628145,0,0.19119708
+NewC0019,Female,0,No,Yes,63,No,No,No,Yes,Yes,No,No internet service,Yes,No,One year,Yes,Credit card (automatic),24.88841715896199,426.79485895245057,0,0.06606466
+NewC0020,Female,1,No,No,53,Yes,Yes,No,No,No,No,No,No,Yes,One year,No,Mailed check,53.55116813006386,2620.2159138631787,0,0.20336466
+NewC0021,Male,1,Yes,Yes,12,Yes,No phone service,Fiber optic,Yes,Yes,No,No internet service,No,Yes,Month-to-month,Yes,Electronic check,92.09122221320962,4196.166948936127,1,0.6563678
+NewC0022,Male,0,No,Yes,59,Yes,No,Fiber optic,No,No internet service,Yes,No,No internet service,No,Two year,Yes,Credit card (automatic),103.51376492847359,198.97081926133555,0,0.25213146
+NewC0023,Female,0,Yes,No,62,No,No,DSL,No internet service,No internet service,No internet service,Yes,No,Yes,Month-to-month,No,Electronic check,108.19203090841008,6890.540734120179,0,0.3252776
+NewC0024,Female,0,Yes,Yes,0,No,No,DSL,No internet service,No internet service,No,No internet service,No internet service,No internet service,One year,Yes,Electronic check,71.16679516928463,3583.5028281884047,0,0.48744112
+NewC0025,Female,0,Yes,Yes,23,Yes,No,Fiber optic,No internet service,No internet service,No,No internet service,No,No,One year,No,Credit card (automatic),119.82568341470676,6545.532087584123,0,0.17661771
+NewC0026,Male,0,No,No,36,No,No phone service,Fiber optic,No internet service,No internet service,No internet service,No internet service,Yes,Yes,One year,Yes,Mailed check,69.5536348190497,2062.6042495712927,1,0.54475355
+NewC0027,Male,0,Yes,Yes,5,No,No phone service,No,Yes,No internet service,Yes,Yes,Yes,Yes,Two year,Yes,Credit card (automatic),115.94639325825372,2026.5165779879005,0,0.1297226
+NewC0028,Male,0,No,Yes,51,No,No,DSL,Yes,No internet service,No,No internet service,No,Yes,Two year,No,Mailed check,68.5083735267297,1003.9292400662897,0,0.063792065
+NewC0029,Male,1,No,No,23,No,No,No,No internet service,No,No,No internet service,Yes,Yes,One year,Yes,Bank transfer (automatic),57.09097594111096,7026.751949962707,0,0.4291199
+NewC0030,Female,0,Yes,Yes,5,No,No,Fiber optic,Yes,No internet service,Yes,No internet service,Yes,Yes,Month-to-month,Yes,Mailed check,27.959680440326068,2427.492105687749,1,0.7421846
+NewC0031,Female,0,No,No,33,Yes,Yes,Fiber optic,No,No,No,Yes,No internet service,No internet service,Two year,Yes,Electronic check,61.90978128116979,2080.718058225818,0,0.1992374
+NewC0032,Male,0,No,No,60,No,No,No,Yes,No internet service,No internet service,Yes,Yes,Yes,Month-to-month,No,Electronic check,94.65008090624993,4977.521608464918,0,0.19684045
+NewC0033,Male,1,No,No,30,Yes,Yes,Fiber optic,No,No internet service,Yes,Yes,No,No internet service,Month-to-month,Yes,Credit card (automatic),99.48473120163469,941.5956751532794,1,0.6605463
+NewC0034,Female,1,Yes,No,63,No,No,DSL,Yes,No internet service,Yes,Yes,Yes,Yes,Two year,Yes,Bank transfer (automatic),48.51952028510486,2000.4251414895546,0,0.054375876
+NewC0035,Female,1,No,No,49,No,Yes,No,No,No,No internet service,No,Yes,No,Two year,No,Credit card (automatic),36.29215836872004,142.82317489875322,0,0.095559314
+NewC0036,Male,0,Yes,Yes,71,Yes,Yes,No,No,No,No internet service,No,Yes,No internet service,Two year,Yes,Mailed check,74.02811976440415,4087.635563678941,0,0.022690423
+NewC0037,Female,0,Yes,Yes,63,Yes,Yes,No,Yes,Yes,Yes,No,No,No internet service,Month-to-month,No,Bank transfer (automatic),94.27871373154849,7287.72492093232,0,0.09675539
+NewC0038,Male,1,No,Yes,11,Yes,No phone service,Fiber optic,No internet service,No internet service,No,Yes,No internet service,No internet service,Two year,Yes,Electronic check,45.439044895077785,3318.1238673970524,0,0.31122333
+NewC0039,Male,0,No,No,21,Yes,No,DSL,No internet service,No,Yes,No internet service,Yes,No internet service,One year,No,Electronic check,110.10682502720351,5289.979146304508,0,0.3337834
+NewC0040,Male,1,Yes,No,50,Yes,No phone service,DSL,No,No internet service,Yes,No,No internet service,No,Month-to-month,No,Mailed check,83.02567852427418,6849.329591177174,0,0.23572531
+NewC0041,Male,0,No,No,7,Yes,No,No,No,No internet service,No,No,No internet service,Yes,One year,No,Electronic check,83.30354831346467,498.1169028184714,0,0.19202518
+NewC0042,Male,1,No,Yes,67,No,No,No,No internet service,Yes,No internet service,No internet service,Yes,Yes,Month-to-month,No,Mailed check,29.058463446035347,6746.20892387008,0,0.24974795
+NewC0043,Female,1,No,Yes,37,No,No,No,Yes,Yes,Yes,No internet service,No internet service,Yes,Month-to-month,No,Mailed check,84.72792642520969,2683.7025566673933,0,0.43358064
+NewC0044,Female,1,Yes,No,46,Yes,Yes,No,No internet service,No,No internet service,No internet service,Yes,No,One year,Yes,Bank transfer (automatic),82.23962997340973,490.0607766854773,0,0.14912394
+NewC0045,Female,1,Yes,Yes,51,Yes,Yes,Fiber optic,No,No,No,Yes,No internet service,No internet service,One year,No,Bank transfer (automatic),38.60093463627173,5390.919264253969,0,0.23692012
+NewC0046,Female,0,No,Yes,19,Yes,No phone service,Fiber optic,No internet service,No,No,No internet service,Yes,Yes,One year,Yes,Credit card (automatic),102.16687777218502,3211.699547009855,1,0.6528509
+NewC0047,Male,0,Yes,No,7,Yes,Yes,DSL,No internet service,No,No internet service,No,No,No internet service,One year,Yes,Electronic check,42.779192440846955,6068.338162065782,1,0.54444313
+NewC0048,Female,0,No,No,54,No,Yes,DSL,Yes,No internet service,Yes,No internet service,No internet service,No internet service,One year,No,Bank transfer (automatic),53.4509135899435,3644.848881338096,0,0.1424931
+NewC0049,Female,0,Yes,Yes,44,Yes,No phone service,Fiber optic,Yes,No,Yes,Yes,No internet service,No,One year,No,Mailed check,38.99047418493481,6040.321229268331,0,0.100509025
